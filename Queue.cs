@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AttackServer
 {
-    internal class Queue
+    internal class Queue<T>
     {
-        private Node _head;
-        private Node _tail;
+        private Node<T> _head;
+        private Node<T> _tail;
         private int _count;
 
         public Queue()
@@ -19,12 +19,12 @@ namespace AttackServer
             this.setCount(0);
         }
 
-        public void Enqueue(int value)
+        public void Enqueue(T value)
         {
-            Node newNode = new Node(value);
+            Node<T> newNode = new Node<T>(value);
             if (this.getTail() != null)
             {
-                Node tail = this.getTail();
+                Node<T> tail = this.getTail();
                 tail.SetNext(newNode);
                 this.setTail(newNode);
             }
@@ -36,28 +36,32 @@ namespace AttackServer
             this.setCount(this.getCount() + 1);
         }
 
-        public Node Dequeue()
+        public T Dequeue()
         {
-            if (this.getHead() != null)
+            if (this.IsEmpty())
+                throw new Exception("Queue is empty");
+
+            Node<T> head = this.getHead();
+            this.setHead(head.GetNext());
+            if (this.getHead() == null)
             {
-                Node head = this.getHead();
-                this.setHead(head.GetNext());
-                if (this.getHead() == null)
-                {
-                    this.setTail(null);
-                }
-                this.setCount(this.getCount() - 1);
-                return head;
+                this.setTail(null);
             }
-            return null;
+            this.setCount(this.getCount() - 1);
+            return head.GetValue();
         }
 
-        public void setHead(Node head)
+        private bool IsEmpty()
+        {
+            return this.getHead() == null;
+        }
+
+        public void setHead(Node<T> head)
         {
             this._head = head;
         }
 
-        public void setTail(Node node)
+        public void setTail(Node<T> node)
         {
             this._tail = null;
         }
@@ -67,12 +71,12 @@ namespace AttackServer
             this._count = count;
         }
 
-        public Node getHead()
+        public Node<T> getHead()
         {
             return this._head;
         }
 
-        public Node getTail()
+        public Node<T> getTail()
         {
             return this._tail;
         }

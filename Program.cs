@@ -20,11 +20,14 @@ namespace AttackServer
             //await Task.WhenAll(TaskA, TaskB);
             //Console.WriteLine($"TaskA result: {TaskA.Result}\nTaskB result: {TaskB.Result}");
 
-            Node node1 = new Node(1);
-            Node node2 = new Node(2);
-            node1.SetNext(node2);
-            Console.WriteLine(node1.ToString());
-            Console.WriteLine(node2.ToString());
+            //Node<int> node1 = new Node<int>(1);
+            //Node<int> node2 = new Node<int>(2);
+            //node1.SetNext(node2);
+            //Console.WriteLine(node1.ToString());
+            //Console.WriteLine(node2.ToString());
+            Queue<int> queue = new Queue<int>();
+            queue.Dequeue();
+
             Console.ReadLine();
         }
 
