@@ -15,10 +15,16 @@ namespace AttackServer
             //Console.WriteLine(await ReadFileAsync(file));
             //string result = await GetDataAsync();
             //Console.WriteLine(result);
-            Task<string> TaskA = GetDataFromServiceAAsync();
-            Task<string> TaskB = GetDataFromServiceBAsync();
-            await Task.WhenAll(TaskA, TaskB);
-            Console.WriteLine($"TaskA result: {TaskA.Result}\nTaskB result: {TaskB.Result}");
+            //Task<string> TaskA = GetDataFromServiceAAsync();
+            //Task<string> TaskB = GetDataFromServiceBAsync();
+            //await Task.WhenAll(TaskA, TaskB);
+            //Console.WriteLine($"TaskA result: {TaskA.Result}\nTaskB result: {TaskB.Result}");
+
+            Node node1 = new Node(1);
+            Node node2 = new Node(2);
+            node1.SetNext(node2);
+            Console.WriteLine(node1.ToString());
+            Console.WriteLine(node2.ToString());
             Console.ReadLine();
         }
 
