@@ -11,7 +11,6 @@ namespace AttackServer
     {
         static async Task Main(string[] args)
         {
-            // test
             //string file = "C:\\_kodcode2\\Omar\\AttackServer\\GetFileAs.txt";
             //Console.WriteLine(await ReadFileAsync(file));
             //string result = await GetDataAsync();
